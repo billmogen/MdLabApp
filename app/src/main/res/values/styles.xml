@@ -1,0 +1,58 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="WeatherModule">
+        <item name="android:background">@drawable/modul_bg</item>
+        <item name="android:padding">@dimen/padding_sm</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Label">
+        <item name="android:textSize">@dimen/text_lg</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="Label.Medium" parent="@style/Label">
+        <item name="android:textSize">@dimen/text_md</item>
+    </style>
+
+    <style name="Line.Solid" parent="@style/Line">
+        <item name="android:layout_marginTop">@dimen/margin_xs</item>
+        <item name="android:layout_marginBottom">@dimen/margin_xs</item>
+        <item name="android:src">@color/forecast_gray</item>
+    </style>
+
+    <style name="Line.Dotted" parent="@style/Line">
+        <item name="android:layout_marginBottom">0.0dip</item>
+        <item name="android:src">@mipmap/dotted_line_624</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+
+    <style name="Line">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1.0dip</item>
+    </style>
+
+
+
+</resources>

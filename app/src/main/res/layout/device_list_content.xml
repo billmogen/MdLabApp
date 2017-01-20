@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+        >
+
+            <ImageView
+                android:id="@+id/deviceImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:src="@mipmap/weatherstationoffline"
+            />
+            <TextView
+                android:id="@+id/deviceName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="30dp"
+                android:layout_alignBottom="@+id/deviceImage"
+                android:layout_marginBottom="4dp"
+                android:layout_toRightOf="@+id/deviceImage"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"/>
+            <Button
+                android:id="@+id/connectionState"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/deviceImage"
+                android:layout_marginBottom="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_alignParentRight="true"
+                android:background="@color/gray"
+                android:text="connect"
+                android:textSize="20dp"
+
+            />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

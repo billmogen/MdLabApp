@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/WeatherModule" >
+
+    <TextView
+        android:id="@+id/details_label"
+        style="@style/Label"
+        android:layout_marginTop="@dimen/negative_margin_md"
+        android:text="详细信息"
+    />
+
+    <ImageView
+        android:id="@+id/divider"
+        style="@style/Line.Solid"
+        android:layout_below="@id/details_label"
+        android:scaleType="fitXY" />
+
+    <ImageView
+        android:id="@+id/details_icon"
+        android:layout_width="@dimen/details_icon_size"
+        android:layout_height="@dimen/details_icon_size"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/dotline2"
+        android:layout_below="@id/divider"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_xs"
+        android:layout_marginTop="0.0dip"
+        android:src="@mipmap/ic_default_big" />
+
+    <TextView android:id="@+id/weather_name_tv"
+              style="@style/Label"
+              android:layout_height="42dip"
+              android:layout_alignParentRight="true"
+              android:layout_below="@id/divider"
+              android:gravity="center"
+              android:text="--"
+              android:paddingBottom="@dimen/padding_xs"
+              />
+    <TextView android:id="@+id/feelslike_label"
+              style="@style/Label.Medium"
+              android:layout_height="42dip"
+              android:layout_alignBottom="@id/weather_name_tv"
+              android:layout_alignTop="@id/weather_name_tv"
+              android:layout_below="@id/divider"
+              android:layout_marginLeft="@dimen/margin_md"
+              android:layout_marginRight="5.0dip"
+              android:layout_toRightOf="@id/details_icon"
+              android:gravity="center"
+              android:text="天气"/>
+
+    <ImageView
+        android:id="@+id/dotline1"
+        style="@style/Line.Dotted"
+        android:layout_alignLeft="@id/feelslike_label"
+        android:layout_below="@id/feelslike_label" />
+
+
+
+    <TextView android:id="@+id/feelsTemp_tv"
+              style="@style/Label"
+              android:layout_height="42dip"
+              android:layout_width="wrap_content"
+              android:layout_alignParentRight="true"
+              android:layout_below="@id/dotline1"
+              android:layout_marginLeft="5.0dip"
+              android:gravity="center"
+              android:text="--°"
+              android:paddingBottom="@dimen/padding_xs"
+              android:paddingTop="@dimen/padding_xs"/>
+    <TextView android:id="@+id/humidity_label"
+              style="@style/Label.Medium"
+              android:layout_height="42dip"
+              android:layout_alignBottom="@id/feelsTemp_tv"
+              android:layout_alignLeft="@id/feelslike_label"
+              android:layout_alignTop="@id/feelsTemp_tv"
+              android:layout_below="@id/dotline1"
+              android:layout_marginRight="5.0dip"
+              android:gravity="center"
+              android:text="环境温度"/>
+    <ImageView
+        android:id="@+id/dotline2"
+        style="@style/Line.Dotted"
+        android:layout_alignLeft="@id/feelslike_label"
+        android:layout_below="@id/feelsTemp_tv" />
+
+    <TextView android:id="@+id/humidity_tv"
+              style="@style/Label"
+              android:layout_height="42dip"
+              android:layout_alignParentRight="true"
+              android:layout_below="@id/dotline2"
+              android:layout_marginLeft="5.0dip"
+              android:gravity="center"
+              android:text="--%"
+              android:paddingBottom="@dimen/padding_xs"
+              android:paddingTop="@dimen/padding_xs"/>
+    <TextView android:id="@+id/visibility_label"
+              style="@style/Label.Medium"
+              android:layout_height="42dip"
+              android:layout_alignBottom="@id/humidity_tv"
+              android:layout_alignLeft="@id/feelslike_label"
+              android:layout_alignTop="@id/humidity_tv"
+              android:layout_below="@id/dotline2"
+              android:layout_marginRight="5.0dip"
+              android:gravity="center"
+              android:text="湿度"/>
+    <ImageView
+        android:id="@+id/dotline3"
+        style="@style/Line.Dotted"
+        android:layout_alignLeft="@id/feelslike_label"
+        android:layout_below="@id/humidity_tv" />
+
+    <TextView android:id="@+id/wind_tv"
+              style="@style/Label"
+              android:layout_height="42dip"
+              android:layout_alignParentRight="true"
+              android:layout_below="@id/dotline3"
+              android:layout_marginLeft="5.0dip"
+              android:gravity="center"
+              android:paddingBottom="@dimen/padding_xs"
+              android:paddingTop="@dimen/padding_xs"
+              android:text="--"/>
+    <TextView android:id="@+id/uv_label"
+              style="@style/Label.Medium"
+              android:layout_height="42dip"
+              android:layout_alignBottom="@id/wind_tv"
+              android:layout_alignLeft="@id/feelslike_label"
+              android:layout_alignTop="@id/wind_tv"
+              android:layout_below="@id/dotline3"
+              android:layout_marginRight="5.0dip"
+              android:gravity="center"
+              android:text="风力"/>
+    <TextView  android:id="@+id/wind_desc"
+               style="@style/Label.Medium"
+               android:layout_height="42dip"
+               android:layout_width="wrap_content"
+               android:layout_alignBottom="@id/wind_tv"
+               android:layout_alignTop="@id/wind_tv"
+               android:layout_below="@id/dotline3"
+               android:layout_marginRight="5.0dip"
+               android:layout_toLeftOf="@id/wind_tv"
+               android:gravity="center"
+               android:text="--"/>
+
+    <ImageView
+        android:id="@+id/dotline7"
+        style="@style/Line.Dotted"
+        android:layout_alignLeft="@id/feelslike_label"
+        android:layout_below="@id/wind_tv" />
+    <TextView android:id="@+id/pressure_tv"
+              style="@style/Label"
+              android:layout_height="42dip"
+              android:layout_alignParentRight="true"
+              android:layout_below="@id/dotline7"
+              android:layout_marginLeft="5.0dip"
+              android:gravity="center"
+              android:text="--hPa"
+              android:paddingBottom="@dimen/padding_xs"
+              android:paddingTop="@dimen/padding_xs"/>
+    <TextView android:id="@+id/pressure_label"
+              style="@style/Label.Medium"
+              android:layout_height="42dip"
+              android:layout_alignBottom="@id/pressure_tv"
+              android:layout_alignLeft="@id/feelslike_label"
+              android:layout_alignTop="@id/pressure_tv"
+              android:layout_below="@id/dotline7"
+              android:layout_marginRight="5.0dip"
+              android:gravity="center"
+              android:text="大气压"/>
+    <ImageView
+        android:id="@+id/dotline8"
+        style="@style/Line.Dotted"
+        android:layout_alignLeft="@id/feelslike_label"
+        android:layout_below="@id/pressure_tv" />
+    <TextView android:id="@+id/sun_tv"
+              style="@style/Label"
+              android:layout_height="42dip"
+              android:layout_alignParentRight="true"
+              android:layout_below="@id/dotline8"
+              android:layout_marginLeft="5.0dip"
+              android:gravity="center"
+              android:text="--%"
+              android:paddingBottom="@dimen/padding_xs"
+              android:paddingTop="@dimen/padding_xs"/>
+    <TextView android:id="@+id/sun_lable"
+              style="@style/Label.Medium"
+              android:layout_height="42dip"
+              android:layout_alignBottom="@id/sun_tv"
+              android:layout_alignLeft="@id/feelslike_label"
+              android:layout_alignTop="@id/sun_tv"
+              android:layout_below="@id/dotline8"
+              android:layout_marginRight="5.0dip"
+              android:gravity="center"
+              android:text="光照强度"/>
+    <ImageView
+        android:id="@+id/dotline9"
+        style="@style/Line.Dotted"
+        android:layout_alignLeft="@id/feelslike_label"
+        android:layout_below="@id/sun_tv" />
+    <TextView android:id="@+id/rain_tv"
+              style="@style/Label"
+              android:layout_height="42dip"
+              android:layout_alignParentRight="true"
+              android:layout_below="@id/dotline9"
+              android:layout_marginLeft="5.0dip"
+              android:gravity="center"
+              android:text="--mm"
+              android:paddingBottom="@dimen/padding_xs"
+              android:paddingTop="@dimen/padding_xs"/>
+    <TextView android:id="@+id/rain_label"
+              style="@style/Label.Medium"
+              android:layout_height="42dip"
+              android:layout_alignBottom="@id/rain_tv"
+              android:layout_alignLeft="@id/feelslike_label"
+              android:layout_alignTop="@id/rain_tv"
+              android:layout_below="@id/dotline9"
+              android:layout_marginRight="5.0dip"
+              android:gravity="center"
+              android:text="降雨量"/>
+
+    <ImageView
+        android:id="@+id/divider1"
+        style="@style/Line.Solid"
+        android:layout_below="@id/rain_tv"
+        android:scaleType="fitXY" />
+
+    <TextView android:id="@+id/details_label1"
+              style="@style/Label"
+              android:layout_marginTop="@dimen/negative_margin_md"
+              android:layout_below="@id/divider1"
+              android:text="空气质量"/>
+
+    <ImageView
+        android:id="@+id/divider2"
+        style="@style/Line.Solid"
+        android:layout_below="@id/details_label1"
+        android:scaleType="fitXY" />
+    <ImageView
+        android:id="@+id/aqi_icon"
+        android:layout_width="@dimen/details_icon_size"
+        android:layout_height="@dimen/details_icon_size"
+        android:layout_below="@id/divider2"
+        android:layout_marginLeft="@dimen/margin_xs"
+        android:layout_marginTop="25.0dip"
+        android:src="@mipmap/na" />
+    <TextView android:id="@+id/aqi_level"
+              style="@style/Label"
+              android:layout_width="match_parent"
+              android:layout_height="60.0dip"
+              android:layout_alignParentRight="true"
+              android:layout_below="@id/divider2"
+              android:layout_marginLeft="@dimen/margin_md"
+              android:layout_marginRight="5.0dip"
+              android:layout_toRightOf="@id/aqi_icon"
+              android:gravity="center"
+              android:paddingBottom="@dimen/padding_xs"
+              android:paddingTop="@dimen/padding_xs"
+              android:text="----"
+              android:textSize="30sp"/>
+    <ImageView
+        android:id="@+id/dotline4"
+        style="@style/Line.Dotted"
+        android:layout_alignLeft="@id/aqi_level"
+        android:layout_below="@id/aqi_level" />
+    <TextView android:id="@+id/pm25"
+              style="@style/Label"
+              android:layout_width="wrap_content"
+              android:layout_height="42dip"
+              android:layout_alignParentRight="true"
+              android:layout_below="@id/dotline4"
+              android:layout_marginLeft="5.0dip"
+              android:gravity="center"
+              android:paddingBottom="@dimen/padding_xs"
+              android:paddingTop="@dimen/padding_xs"
+              android:text="--"/>
+    <TextView  android:id="@+id/pm25_label"
+               style="@style/Label.Medium"
+               android:layout_height="42dip"
+               android:layout_alignLeft="@id/aqi_level"
+               android:layout_below="@id/dotline4"
+               android:layout_marginRight="5.0dip"
+               android:gravity="center"
+               android:text="PM2.5"/>
+    <TextView android:id="@+id/blank"
+              style="@style/Label.Medium"
+              android:layout_width="match_parent"
+              android:layout_height="42dip"
+              android:layout_below="@id/pm25"
+              android:layout_marginLeft="5.0dip"
+              android:layout_marginRight="5.0dip"
+              android:maxLines="2"
+              android:gravity="center_vertical"
+              android:paddingBottom="@dimen/padding_xs"
+              android:paddingTop="@dimen/padding_xs"
+              />
+    <ImageView
+        android:id="@+id/dotline5"
+        style="@style/Line.Dotted"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/blank" />
+    <TextView android:id="@+id/aqi_desc"
+              style="@style/Label.Medium"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/dotline5"
+              android:layout_marginLeft="5.0dip"
+              android:layout_marginRight="5.0dip"
+              android:maxLines="2"
+              android:gravity="center_vertical"
+              android:paddingBottom="@dimen/padding_xs"
+              android:paddingTop="@dimen/padding_xs"
+              android:text="--"
+              android:textSize="15sp"/>
+    <ImageView
+        android:id="@+id/dotline6"
+        style="@style/Line.Dotted"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/aqi_desc" />
+    <TextView android:id="@+id/weather_aqi_foot_tv"
+              android:layout_width="fill_parent"
+              android:layout_height="30dip"
+              android:layout_alignParentLeft="true"
+              android:layout_below="@id/dotline6"
+              android:paddingTop="4dip"
+              android:gravity="bottom|right"
+              android:text="毛豆实验室检测"
+              android:textColor="@android:color/white"
+              android:textSize="@dimen/text_md"/>
+</RelativeLayout>
