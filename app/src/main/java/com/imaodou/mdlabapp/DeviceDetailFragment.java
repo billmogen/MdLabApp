@@ -2,9 +2,11 @@ package com.imaodou.mdlabapp;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -15,7 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.imaodou.mdlabapp.db.MdLabDBHelper;
 import com.imaodou.mdlabapp.device.DeviceWeatherStation;
 
 /**
@@ -38,6 +42,7 @@ public class DeviceDetailFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
 
     private TextView weatherName;
     private ImageView weatherIcon;
@@ -95,6 +100,7 @@ public class DeviceDetailFragment extends Fragment {
             toolBarTitle = (TextView) activity.findViewById(R.id.toolbar_title);
             toolBarTitle.setText(TOOLBARNAME);
 
+
             if (appBarLayout != null) {
                 if (mParam1.startsWith("MDLab_WeatherStation")) {
 //                    appBarLayout.setTitle("hello");
@@ -104,6 +110,7 @@ public class DeviceDetailFragment extends Fragment {
 
             }
         }
+
         Log.d(TAG, "onCreate: ");
     }
 
@@ -129,7 +136,22 @@ public class DeviceDetailFragment extends Fragment {
 
         return rootView;
     }
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onActivityCreated(savedInstanceState);
 
+//
+//        temperature.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub
+//                Intent intent = new Intent(getActivity(), ViewPagerChartsActivity.class);
+//                startActivity(intent);
+//
+//            }
+//        });
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -190,9 +212,12 @@ public class DeviceDetailFragment extends Fragment {
         {
 //            textView.setText(intent.getExtras().getString("deviceStates"));
             byte[] showData = intent.getByteArrayExtra("deviceStates");
+            //如果解码成功则初始化UI，保存数据到数据库
             if (mWeatherMsg.decodeWeatherStationMsg(showData)) {
                 Log.d(TAG, "onReceive: decodemsg success!");
                 initView(mWeatherMsg);
+                mWeatherMsg.saveWeatherMsgIntoDB();
+
             }
 
         }
@@ -231,13 +256,13 @@ public class DeviceDetailFragment extends Fragment {
             weatherIcon.setImageResource(R.mipmap.ic_cloudy_big);
         }
 
-        temperature.setText(Integer.toString(mWeatherMsg.getTemperature()) + " C");
+        temperature.setText(Integer.toString(mWeatherMsg.getTemperature()) + " ℃");
         humidity.setText( Integer.toString(mWeatherMsg.getHumidity()) + " %");
         pressure.setText(Float.toString(mWeatherMsg.getPressure()) + " hPa");
         windSpeed.setText(Integer.toString(mWeatherMsg.getWindSpeed()) + " cm/s");
         windDirection.setText((mWeatherMsg.getWindDirection()));
         rainCollect.setText(Integer.toString(mWeatherMsg.getRainCollect()) + " mm");
-        sunShine.setText(Integer.toString(mWeatherMsg.getSunShine()) + " %");
+        sunShine.setText(Integer.toString(mWeatherMsg.getSunLux()) + " lx");
         pm25.setText(Float.toString(mWeatherMsg.getPM25()));
 //        uvLight.setText("紫外线：    " + Integer.toString(mWeatherMsg.getUvLight()));
 

@@ -1,6 +1,7 @@
 package com.imaodou.mdlabapp;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -15,7 +16,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.imaodou.mdlabapp.db.MdLabDBHelper;
 import com.imaodou.mdlabapp.net.TcpClientConnector;
+import com.imaodou.mdlabapp.util.MyApplication;
 
 import java.io.IOException;
 
@@ -26,6 +29,7 @@ public class DeviceDetailActivity extends AppCompatActivity implements DeviceDet
     private static final String GETSTATECMD = "FFFF03010201";
     private static final byte[] getCmd = {127,127, 3, 1 ,2,1};
 
+    private MdLabDBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +37,15 @@ public class DeviceDetailActivity extends AppCompatActivity implements DeviceDet
         setContentView(R.layout.activity_device_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         tcpClientConnector = TcpClientConnector.getInstance();
-        tcpClientConnector.creatConnect("192.168.4.22", 1025);
+//        tcpClientConnector.creatConnect("192.168.4.22", 1025);
+        tcpClientConnector.creatConnect("192.168.4.1", 2001);
         Log.d(TAG, "onCreate: tcpClientConnector create!");
         Log.d(TAG, "onCreate: " + tcpClientConnector.toString());
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
 
                 try {
                     tcpClientConnector.send(hex2Bytes(GETSTATECMD));

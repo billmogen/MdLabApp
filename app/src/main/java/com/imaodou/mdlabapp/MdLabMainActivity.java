@@ -52,7 +52,6 @@ public class MdLabMainActivity extends AppCompatActivity
     private WifiInfo wifiInfo;
     private WifiAdmin wifiAdmin;
     private final String TAG = "MdLab";
-    private MdLabDBHelper dbHelper;
     private boolean mConnectFlag;
     private ConnectionChangeReceiver myReceiver;
     private TcpClientConnector tcpClientConn;
@@ -76,8 +75,6 @@ public class MdLabMainActivity extends AppCompatActivity
             }
         });
 
-        dbHelper = new MdLabDBHelper(this, "MdLabStore.db", null, 2);
-        SQLiteDatabase db =  dbHelper.getWritableDatabase();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -293,7 +290,7 @@ public class MdLabMainActivity extends AppCompatActivity
                         mConnectFlag = true;
                         Log.d(TAG, "onReceive: wifiConnected!");
                         if (mTwoPane) {
-                            tcpClientConn.creatConnect("192.168.4.22", 1025);
+                            tcpClientConn.creatConnect("192.168.1.1", 2001);
                             Log.d(TAG, "onReceive: tcpclientconn create!");
                         }
 
@@ -348,6 +345,7 @@ public class MdLabMainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
 
@@ -360,13 +358,9 @@ public class MdLabMainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
+        if (id == R.id.nav_report_image) {
+            startActivity(new Intent(this, ViewPagerChartsActivity.class));
+        } else if (id == R.id.nav_help) {
 
         } else if (id == R.id.nav_share) {
 

@@ -105,5 +105,7 @@
     <dimen name="indicator_internal_padding">4.0dip</dimen>
     <dimen name="header_footer_left_right_padding">24.0dip</dimen>
     <dimen name="header_footer_top_bottom_padding">12.0dip</dimen>
-    <dimen name="weather_flipweather_weather_info_flippertext_textsizeper_location_textsize">35.0sp</dimen>
+    <dimen name="weather_flipweather_weather_info_flippertext_textsizeper_location_textsize">
+        35.0sp
+    </dimen>
 </resources>

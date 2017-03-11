@@ -82,20 +82,44 @@ public class TcpClientConnector {
     private void connect(String mSerIP, int mSerPort) throws IOException {
         if (mClient == null) {
             mClient = new Socket(mSerIP, mSerPort);
+//            mClient.setSoTimeout(5000);
+//            mClient.setTcpNoDelay(true);
+//            mClient.setReceiveBufferSize(1024);
+//            mClient.setSendBufferSize(1024);
+//            mClient.setKeepAlive(true);
         }
         InputStream inputStream = mClient.getInputStream();
-        byte[] buffer = new byte[19];
-        int len = -1;
-        while ((len = inputStream.read(buffer)) != -1) {
-//            String data = byte2hex(buffer);
-            Message message = new Message();
-            message.what = 100;
-            Bundle bundle = new Bundle();
-//            bundle.putString("data", data);
-            bundle.putByteArray("data", buffer);
-            message.setData(bundle);
-            mHandler.sendMessage(message);
+        int count = 22;
+        int readCount = 0;
+        int len;
+
+        while (true) {
+            byte[] buffer = new byte[count];
+            byte[] tBuf = new byte[count];
+            while(readCount < count) {
+                readCount += inputStream.read(buffer, readCount, count - readCount);
+                Log.d(TAG, "connect: readCount " + readCount);
+            }
+            String str = byte2hex(buffer);
+            if (str.startsWith("FF")) {
+                Message message = new Message();
+                message.what = 100;
+                Bundle bundle = new Bundle();
+                bundle.putByteArray("data", buffer);
+                message.setData(bundle);
+                mHandler.sendMessage(message);
+
+            } else {
+                len = inputStream.read(tBuf);
+                Log.d(TAG, "connect: len " + len);
+            }
+            readCount = 0;
+
+
+
+
         }
+
     }
 
     /**
