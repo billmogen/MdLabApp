@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.widget.Toast;
+
+import com.imaodou.mdlabapp.util.MyApplication;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -86,14 +89,14 @@ public class TcpClientConnector {
 //            mClient.setTcpNoDelay(true);
 //            mClient.setReceiveBufferSize(1024);
 //            mClient.setSendBufferSize(1024);
-//            mClient.setKeepAlive(true);
+            mClient.setKeepAlive(true);
         }
         InputStream inputStream = mClient.getInputStream();
         int count = 22;
         int readCount = 0;
         int len;
 
-        while (true) {
+        while (inputStream.available() != -1) {
             byte[] buffer = new byte[count];
             byte[] tBuf = new byte[count];
             while(readCount < count) {
@@ -114,10 +117,6 @@ public class TcpClientConnector {
                 Log.d(TAG, "connect: len " + len);
             }
             readCount = 0;
-
-
-
-
         }
 
     }
@@ -128,12 +127,16 @@ public class TcpClientConnector {
      * @param buffer 需要发送的内容
      */
     public void send(byte[] buffer) throws IOException {
-
-        OutputStream outputStream = mClient.getOutputStream();
-        if (outputStream != null) {
-            outputStream.write(buffer);
-            outputStream.flush();
+        if (mClient == null) {
+            Toast.makeText(MyApplication.getContextObject(), "网络错误，请重新连接！", Toast.LENGTH_SHORT).show();
+        } else {
+            OutputStream outputStream = mClient.getOutputStream();
+            if (outputStream != null) {
+                outputStream.write(buffer);
+                outputStream.flush();
+            }
         }
+
 
     }
 

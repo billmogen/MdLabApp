@@ -13,6 +13,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -144,7 +145,9 @@ public class WifiAdmin {
     public String getMacAddress() {
         return (mWifiInfo == null) ? "NULL" : mWifiInfo.getMacAddress();
     }
-
+    public String getSSID() {
+        return (mWifiInfo == null) ? "NULL" : mWifiInfo.getSSID();
+    }
     public String getBSSID() {
         return (mWifiInfo == null) ? "NULL" : mWifiInfo.getBSSID();
     }
@@ -240,6 +243,29 @@ public class WifiAdmin {
             }
         }
         return config;
+    }
+    /**
+     * 搜索附近的热点信息，并返回所有热点为信息的SSID集合数据
+     * 如果搜到热点里带有Car的自动增加两条：遥控模式和路径模式
+     */
+    public List<String> getScanWifiResult() {
+        // 扫描的热点数据
+        List<ScanResult> resultList;
+        // 开始扫描热点
+        mWifiManager.startScan();
+        resultList = mWifiManager.getScanResults();
+        ArrayList<String> ssids = new ArrayList<String>();
+        if (resultList != null) {
+            for (ScanResult scan : resultList) {
+//                if (scan.SSID.contains("Car")) {
+//                    ssids.add(scan.SSID+"-遥控模式");
+////                    ssids.add(scan.SSID+"-路径模式");
+//                } else {
+                    ssids.add(scan.SSID);// 遍历数据，取得ssid数据集
+//                }
+            }
+        }
+        return ssids;
     }
 
     /** * 断开指定ID的网络 * * @param netId */

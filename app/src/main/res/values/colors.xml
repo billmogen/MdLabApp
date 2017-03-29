@@ -189,4 +189,8 @@
     <color name="forecast_bg_startcolor">#00416173</color>
     <color name="forecast_bg_endcolor">#3f416173</color>
     <color name="gray_background">#ff272627</color>
+    <color name="connect_state_text_offline">#ff5a5a5a</color>
+    <color name="connect_state_text_online">#ffffffff</color>
+    <color name="connect_state_bg_online">#7700ff00</color>
+    <color name="connect_state_bg_offline">#ffffffff</color>
 </resources>

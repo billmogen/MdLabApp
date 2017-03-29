@@ -18,19 +18,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:background="@color/transparent"
         app:srcCompat="@mipmap/ic_launcher"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="billmogen"
+        android:text="毛豆小创客"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
-    <TextView
+    <!--TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="billmogen@126.com"/>
+        android:text="billmogen@126.com"/-->
 
 </LinearLayout>

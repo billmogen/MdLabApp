@@ -96,22 +96,17 @@ public class DeviceDetailFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mWeatherMsg = new DeviceWeatherStation();
             Activity activity = this.getActivity();
-            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
-            toolBarTitle = (TextView) activity.findViewById(R.id.toolbar_title);
-            toolBarTitle.setText(TOOLBARNAME);
-
+            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.collapsing_toolbar_layout);
+            appBarLayout.setTitle(TOOLBARNAME);
 
             if (appBarLayout != null) {
                 if (mParam1.startsWith("MDLab_WeatherStation")) {
-//                    appBarLayout.setTitle("hello");
                 } else {
                     appBarLayout.setTitle(mParam1);
                 }
 
             }
         }
-
-        Log.d(TAG, "onCreate: ");
     }
 
     @Override

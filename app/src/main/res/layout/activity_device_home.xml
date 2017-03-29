@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_device_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#B5D2C0"
+    tools:context="com.imaodou.mdlabapp.DeviceHomeActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:minHeight="?attr/actionBarSize" android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" android:id="@+id/home_toolbar">
+
+        <TextView
+            android:id="@+id/home_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+    </android.support.v7.widget.Toolbar>
+    <TextView
+        android:text="状态信息："
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_below="@+id/home_toolbar"
+        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
+        android:layout_marginLeft="13dp" android:layout_marginStart="13dp"
+        android:layout_marginTop="30dp" android:id="@+id/home_state"/>
+    <TextView
+        android:text="当前湿度："
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_below="@+id/home_temperature"
+        android:layout_alignLeft="@+id/home_temperature" android:layout_alignStart="@+id/home_temperature"
+        android:layout_marginTop="20dp" android:id="@+id/home_humidity"/>
+    <TextView
+        android:text="光照强度："
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_below="@+id/home_humidity"
+        android:layout_alignLeft="@+id/home_humidity" android:layout_alignStart="@+id/home_humidity"
+        android:layout_marginTop="20dp" android:id="@+id/home_sunshine"/>
+    <TextView
+        android:text="紫外线："
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_below="@+id/home_sunshine"
+        android:layout_alignLeft="@+id/home_sunshine" android:layout_alignStart="@+id/home_sunshine"
+        android:layout_marginTop="20dp" android:id="@+id/home_uvlight"/>
+    <TextView
+        android:text="当前温度："
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp" android:id="@+id/home_temperature"
+        android:layout_below="@+id/home_state" android:layout_alignLeft="@+id/home_state"
+        android:layout_alignStart="@+id/home_state"/>
+    <com.kyleduo.switchbutton.SwitchButton
+        android:id="@+id/home_light_switch"
+        style="@style/SwitchButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@drawable/custom_text_state_color"
+        android:textSize="14sp"
+        app:kswTextOff="关"
+        app:kswTextOn="开"
+        app:kswTintColor="#0E5AA4"
+        app:kswBackColor="#ffc6c6c6"
+        android:layout_alignBottom="@+id/home_light"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+
+
+    />
+    <TextView
+        android:text="风扇"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_alignTop="@+id/home_temperature"
+        android:layout_alignLeft="@+id/home_light" android:layout_alignStart="@+id/home_light"
+        android:id="@+id/home_fan"/>
+    <com.kyleduo.switchbutton.SwitchButton
+        android:id="@+id/home_fan_switch"
+        style="@style/SwitchButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@drawable/custom_text_state_color"
+        android:textSize="14sp"
+        app:kswTextOff="关"
+        app:kswTextOn="开"
+        app:kswTintColor="#0E5AA4"
+        app:kswBackColor="#ffc6c6c6"
+        android:layout_alignBottom="@+id/home_fan"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    <TextView
+        android:text="窗户"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_alignTop="@+id/home_sunshine"
+        android:layout_alignLeft="@+id/home_blind" android:layout_alignStart="@+id/home_blind"
+        android:id="@+id/home_window"/>
+    <com.kyleduo.switchbutton.SwitchButton
+        android:id="@+id/home_window_switch"
+        style="@style/SwitchButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@drawable/custom_text_state_color"
+        android:textSize="14sp"
+        app:kswTextOff="关"
+        app:kswTextOn="开"
+        app:kswTintColor="#0E5AA4"
+        app:kswBackColor="#ffc6c6c6"
+        android:layout_alignBottom="@+id/home_window"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    <TextView
+        android:text="告警"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/home_warning" android:layout_alignBaseline="@+id/home_uvlight"
+        android:layout_alignBottom="@+id/home_uvlight" android:layout_alignLeft="@+id/home_window"
+        android:layout_alignStart="@+id/home_window"/>
+    <com.kyleduo.switchbutton.SwitchButton
+        android:id="@+id/home_warning_switch"
+        style="@style/SwitchButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@drawable/custom_text_state_color"
+        android:textSize="14sp"
+        app:kswTextOff="关"
+        app:kswTextOn="开"
+        app:kswTintColor="#0E5AA4"
+        app:kswBackColor="#ffc6c6c6"
+        android:layout_alignBottom="@+id/home_warning"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    <TextView
+        android:text="窗帘"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/home_blind" android:layout_alignBaseline="@+id/home_humidity"
+        android:layout_alignBottom="@+id/home_humidity" android:layout_alignLeft="@+id/home_fan"
+        android:layout_alignStart="@+id/home_fan"/>
+    <com.kyleduo.switchbutton.SwitchButton
+        android:id="@+id/home_blind_switch"
+        style="@style/SwitchButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@drawable/custom_text_state_color"
+        android:textSize="14sp"
+        app:kswTextOff="关"
+        app:kswTextOn="开"
+        app:kswTintColor="#0E5AA4"
+        app:kswBackColor="#ffc6c6c6"
+        android:layout_alignBottom="@+id/home_blind"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    <TextView
+        android:text="灯"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:id="@+id/home_light" android:layout_above="@+id/home_fan_switch"
+        android:layout_toLeftOf="@+id/home_light_switch"
+        android:layout_toStartOf="@+id/home_light_switch" android:layout_marginRight="13dp"
+        android:layout_marginEnd="13dp"/>
+
+    <ImageView
+        android:id="@+id/home_dotline"
+        style="@style/Line.Dotted"
+        android:layout_below="@id/home_warning_switch"
+        android:layout_marginTop="5dp"
+    />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/home_dotline"
+        android:background="@mipmap/smarthomebg">
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

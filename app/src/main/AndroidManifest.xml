@@ -52,6 +52,16 @@
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings">
         </activity>
+        <activity
+            android:name=".DeviceCarRockerActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MdLabMainActivity"
+            android:screenOrientation="landscape">
+        </activity>
+        <activity android:name=".DeviceFarmActivity">
+        </activity>
+        <activity android:name=".DeviceHomeActivity">
+        </activity>
     </application>
 
 </manifest>

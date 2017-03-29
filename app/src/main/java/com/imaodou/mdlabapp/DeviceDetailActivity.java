@@ -2,8 +2,10 @@ package com.imaodou.mdlabapp;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.NavUtils;
@@ -22,6 +24,9 @@ import com.imaodou.mdlabapp.util.MyApplication;
 
 import java.io.IOException;
 
+import static com.imaodou.mdlabapp.device.Devices.HOSTIP;
+import static com.imaodou.mdlabapp.device.Devices.TCPPORT;
+
 public class DeviceDetailActivity extends AppCompatActivity implements DeviceDetailFragment.OnFragmentInteractionListener{
 
     private TcpClientConnector tcpClientConnector;
@@ -35,11 +40,21 @@ public class DeviceDetailActivity extends AppCompatActivity implements DeviceDet
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.detail_toolbar);
+        setSupportActionBar(mToolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+        CollapsingToolbarLayout mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout);
+        mCollapsingToolbarLayout.setTitle("CollapsingToolbarLayout");
+        //通过CollapsingToolbarLayout修改字体颜色
+//        mCollapsingToolbarLayout.setExpandedTitleGravity(left| bottom);
+        mCollapsingToolbarLayout.setExpandedTitleColor(Color.GREEN);//设置还没收缩时状态下字体颜色
+        mCollapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);//设置收缩后Toolbar上字体的颜色
+
         tcpClientConnector = TcpClientConnector.getInstance();
-//        tcpClientConnector.creatConnect("192.168.4.22", 1025);
-        tcpClientConnector.creatConnect("192.168.4.1", 2001);
+        tcpClientConnector.creatConnect(HOSTIP, TCPPORT);
         Log.d(TAG, "onCreate: tcpClientConnector create!");
         Log.d(TAG, "onCreate: " + tcpClientConnector.toString());
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -55,13 +70,6 @@ public class DeviceDetailActivity extends AppCompatActivity implements DeviceDet
                 }
             }
         });
-
-        ActionBar actionBar = getSupportActionBar();
-
-        if (actionBar != null) {
-            Log.d(TAG, "onCreate: actionBar");
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
 
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
@@ -79,8 +87,6 @@ public class DeviceDetailActivity extends AppCompatActivity implements DeviceDet
         } else {
             Log.d(TAG, "onCreate: savedInstanceState not null!");
         }
-
-
 
         tcpClientConnector.setOnConnectListener(new TcpClientConnector.ConnectListener() {
             @Override

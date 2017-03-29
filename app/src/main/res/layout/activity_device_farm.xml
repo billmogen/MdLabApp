@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_device_farm"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@mipmap/bg_3_middle"
+    tools:context="com.imaodou.mdlabapp.DeviceFarmActivity">
+
+
+    <TextView
+        android:text="当前状态： "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/farm_state"
+        android:layout_below="@+id/farm_toolbar"
+        android:textColor="@color/colorWhite"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
+    <TextView
+        android:text="当前温度：℃"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_below="@+id/farm_state"
+        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
+        android:textColor="@color/colorWhite"
+        android:layout_marginLeft="29dp" android:layout_marginStart="29dp"
+        android:layout_marginTop="13dp" android:id="@+id/farm_temperature"/>
+    <TextView
+        android:text="土壤湿度：0%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp" android:id="@+id/farm_soil_humidity"
+        android:textColor="@color/colorWhite"
+        android:layout_below="@+id/farm_temperature" android:layout_alignLeft="@+id/farm_temperature"
+        android:layout_alignStart="@+id/farm_temperature"/>
+    <TextView
+        android:text="空气湿度：%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_below="@+id/farm_soil_humidity"
+        android:textColor="@color/colorWhite"
+        android:layout_alignLeft="@+id/farm_soil_humidity" android:layout_alignStart="@+id/farm_soil_humidity"
+        android:layout_marginTop="13dp" android:id="@+id/farm_air_humidity"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" app:srcCompat="@mipmap/plug_small_off"
+        android:layout_below="@+id/farm_fan_img" android:layout_alignRight="@+id/farm_state"
+        android:layout_alignEnd="@+id/farm_state" android:layout_marginTop="35dp"
+        android:background="@color/transparent"
+        android:id="@+id/farm_fan_btn"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" app:srcCompat="@mipmap/plug_small_off"
+        android:layout_alignBottom="@+id/farm_fan_btn" android:layout_centerHorizontal="true"
+        android:background="@color/transparent"
+        android:id="@+id/farm_light_btn"/>
+    <TextView
+        android:text="加热灯"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/farm_light_name"
+        android:layout_alignBaseline="@+id/farm_fan_name"
+        android:layout_alignBottom="@+id/farm_fan_name" android:layout_centerHorizontal="true"/>
+    <TextView
+        android:text="抽水泵"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView10"
+        android:layout_alignBaseline="@+id/farm_light_name"
+        android:layout_alignBottom="@+id/farm_light_name" android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" android:layout_marginRight="13dp"
+        android:layout_marginEnd="13dp"/>
+
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:minHeight="?attr/actionBarSize" android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" android:id="@+id/farm_toolbar">
+
+        <TextView
+            android:id="@+id/farm_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+    </android.support.v7.widget.Toolbar>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" app:srcCompat="@mipmap/plug_small_off"
+        android:id="@+id/farm_pump_btn"
+        android:background="@color/transparent" android:layout_alignTop="@+id/farm_light_btn"
+        android:layout_alignRight="@+id/textView10" android:layout_alignEnd="@+id/textView10"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" app:srcCompat="@mipmap/device_fan_off"
+        android:layout_marginTop="80dp"
+        android:id="@+id/farm_fan_img"
+        android:layout_below="@+id/farm_air_humidity" android:layout_alignRight="@+id/farm_fan_btn"
+        android:layout_alignEnd="@+id/farm_fan_btn"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" app:srcCompat="@mipmap/device_light_off"
+        android:id="@+id/farm_light_img"
+        android:layout_marginBottom="14dp" android:layout_above="@+id/farm_fan_btn"
+        android:layout_alignLeft="@+id/farm_light_btn"
+        android:layout_alignStart="@+id/farm_light_btn"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" app:srcCompat="@mipmap/device_pump_off"
+        android:id="@+id/farm_pump_img"
+        android:layout_above="@+id/farm_fan_btn" android:layout_alignLeft="@+id/farm_pump_btn"
+        android:layout_alignStart="@+id/farm_pump_btn"/>
+    <TextView
+        android:text="换气扇"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/farm_fan_name"
+        android:layout_below="@+id/farm_fan_btn" android:layout_alignRight="@+id/farm_fan_btn"
+        android:layout_alignEnd="@+id/farm_fan_btn"/>
+</RelativeLayout>

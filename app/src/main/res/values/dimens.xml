@@ -8,12 +8,15 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="app_bar_height">200dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="rocker_view">120dp</dimen>
+    <dimen name="seekbar_bottom">10dp</dimen>
 
     <dimen name="weather_topbar_padding">48.0dip</dimen>
     <dimen name="weather_weather_info_flippertext_textsize">28.0sp</dimen>
     <dimen name="weather_temperature_desc">14.0sp</dimen>
     <dimen name="weather_local_time">11.0sp</dimen>
     <dimen name="weather_last_update_time_stamp_textsize">11.0sp</dimen>
+    <dimen name="weather_device_name">20sp</dimen>
     <dimen name="flickr_icon_padding_bottom">0.0dip</dimen>
     <dimen name="temp_high_icon_padding_bottom">0.0dip</dimen>
     <dimen name="temp_icon_padding">14.0dip</dimen>
