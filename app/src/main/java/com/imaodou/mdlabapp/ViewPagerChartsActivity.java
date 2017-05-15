@@ -234,7 +234,7 @@ public class ViewPagerChartsActivity extends AppCompatActivity implements Action
             List<PointValue> values = new ArrayList<PointValue>();
             List<PointValue> valuesH = new ArrayList<PointValue>();
             String startTime = "2017-02-10 15:00:00";
-            String endTime = "2017-02-10 16:00:00";
+            String endTime = "2017-02-10 16:00:00"; //占位
             String column1, column2;
             switch (dataType) {
                 case 1:
@@ -243,27 +243,17 @@ public class ViewPagerChartsActivity extends AppCompatActivity implements Action
                     break;
                 case 4:
                     column1 = "windSpeed";
-                    column2 = "sunShine";
+                    column2 = "sunLux";
                     break;
                 default:
                     column1 = "";
                     column2 = "";
                     break;
             }
-            SimpleDateFormat bartDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-            long timeS = 0;
-            long timeE = 0;
-            try {
-                Date date = bartDateFormat.parse(startTime);
-                timeS = date.getTime();
-                date = bartDateFormat.parse(endTime);
-                timeE = date.getTime();
-
-            } catch (ParseException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+//            SimpleDateFormat bartDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            java.util.Date date = new java.util.Date();
+            long timeE = date.getTime();
+            long timeS = timeE - 3600000;
             MdLabDBHelper mdLabDBHelper = MdLabDBHelper.getInstance(this.getContext());
             for (int i = 0; i < 60; ++i) {
                 int temperatureSum = 0;
@@ -334,20 +324,10 @@ public class ViewPagerChartsActivity extends AppCompatActivity implements Action
                     break;
 
             }
-            SimpleDateFormat bartDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            java.util.Date date = new java.util.Date();
+            long timeE = date.getTime();
+            long timeS = timeE - 3600000;
 
-            long timeS = 0;
-            long timeE = 0;
-            try {
-                Date date = bartDateFormat.parse(startTime);
-                timeS = date.getTime();
-                date = bartDateFormat.parse(endTime);
-                timeE = date.getTime();
-
-            } catch (ParseException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
             MdLabDBHelper mdLabDBHelper = MdLabDBHelper.getInstance(this.getContext());
             for (int i = 0; i < 60; ++i) {
                 float pressureSum = 0;
@@ -393,7 +373,6 @@ public class ViewPagerChartsActivity extends AppCompatActivity implements Action
             data.setAxisYLeft(new Axis().setName("Y 轴").setHasLines(true));
             return data;
         }
-
     }
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to one of the sections/tabs/pages.

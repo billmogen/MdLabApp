@@ -29,19 +29,19 @@ public class DeviceHomeActivity extends AppCompatActivity implements CompoundBut
     private TextView mToolBarTitle;
     private TextView tTemperature;
     private TextView tHumidity;
-    private TextView tSunshine;
-    private TextView tUVLight;
-    private TextView tWaringVal;
+    private TextView tWaringState;
     private SwitchButton sLightBtn;
     private SwitchButton sFanBtn;
-    private SwitchButton sBlindBtn;
-    private SwitchButton sWindowBtn;
+    private TextView tPM25;
+    private TextView tArofene;
+//    private SwitchButton sBlindBtn;
+//    private SwitchButton sWindowBtn;
     private SwitchButton sWarningBtn;
 
     private TcpClientConnector tcpClientConnector;
     private DeviceHome deviceHome;
     private static final String TAG = "DeviceHomeActivity";
-    private static final String HOMEBASECMD = "FF030102000400000000000000000000000000000000";
+    private static final String HOMEBASECMD = "FF030102004400000000000000000000000000000000";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +62,8 @@ public class DeviceHomeActivity extends AppCompatActivity implements CompoundBut
         InitView();
         sLightBtn.setOnCheckedChangeListener(this);
         sFanBtn.setOnCheckedChangeListener(this);
-        sBlindBtn.setOnCheckedChangeListener(this);
-        sWindowBtn.setOnCheckedChangeListener(this);
+//        sBlindBtn.setOnCheckedChangeListener(this);
+//        sWindowBtn.setOnCheckedChangeListener(this);
         sWarningBtn.setOnCheckedChangeListener(this);
 
         tcpClientConnector.setOnConnectListener(new TcpClientConnector.ConnectListener() {
@@ -73,8 +73,9 @@ public class DeviceHomeActivity extends AppCompatActivity implements CompoundBut
                 if (deviceHome.decodeFarmMsg(data)) {
                     tTemperature.setText("当前温度：" + deviceHome.mHomeTemperature + "℃");
                     tHumidity.setText("当前湿度：" + deviceHome.mHomeHumidity + "%");
-                    tSunshine.setText("光照强度：" + deviceHome.mHomeSunshine + "Lux");
-                    tUVLight.setText("紫外线：" + deviceHome.mHomeUvLight);
+                    tPM25.setText("PM25：" + deviceHome.mHomePm25 + "ug/m3");
+                    tArofene.setText("甲醛浓度：" + deviceHome.mHomeArofene + "mg/m3");
+                    tWaringState.setText("告警状态：" + deviceHome.mHomeWarningStr);
                 } else {
                     String upMsg = byte2hex(data);
                     Log.d(TAG, "onReceiveData: upMsg " + upMsg);
@@ -111,35 +112,37 @@ public class DeviceHomeActivity extends AppCompatActivity implements CompoundBut
                 }
                 sentMsgBuf[16] = deviceHome.mHomeRelayState;
                 break;
-            case R.id.home_blind_switch:
-                sentMsgBuf[4] += 2;
-                if (isChecked) {
-                    Log.d(TAG, "onCheckedChanged: openBlind");
-                    deviceHome.mHomeBlindSwitch = true;
-                    //motor forward
-                    sentMsgBuf[7] = 0x01;
-                } else {
-                    Log.d(TAG, "onCheckedChanged: closeBlind");
-                    deviceHome.mHomeBlindSwitch = false;
-                    //motor backward
-                    sentMsgBuf[7] = 0x02;
-                }
-                break;
-            case R.id.home_window_switch:
-                sentMsgBuf[4] += 4;
-                if (isChecked) {
-                    Log.d(TAG, "onCheckedChanged: openWindow");
-                    deviceHome.mHomeWindowSwitch = true;
-                    sentMsgBuf[8] = 0x5A;
-                } else {
-                    Log.d(TAG, "onCheckedChanged: closeWindow");
-                    sentMsgBuf[8] = 0x00;
-                }
-                break;
+//            case R.id.home_blind_switch:
+//                sentMsgBuf[4] += 2;
+//                if (isChecked) {
+//                    Log.d(TAG, "onCheckedChanged: openBlind");
+//                    deviceHome.mHomeBlindSwitch = true;
+//                    //motor forward
+//                    sentMsgBuf[7] = 0x01;
+//                } else {
+//                    Log.d(TAG, "onCheckedChanged: closeBlind");
+//                    deviceHome.mHomeBlindSwitch = false;
+//                    //motor backward
+//                    sentMsgBuf[7] = 0x02;
+//                }
+//                break;
+//            case R.id.home_window_switch:
+//                sentMsgBuf[4] += 4;
+//                if (isChecked) {
+//                    Log.d(TAG, "onCheckedChanged: openWindow");
+//                    deviceHome.mHomeWindowSwitch = true;
+//                    sentMsgBuf[8] = 0x5A;
+//                } else {
+//                    Log.d(TAG, "onCheckedChanged: closeWindow");
+//                    sentMsgBuf[8] = 0x00;
+//                }
+//                break;
             case R.id.home_warning_switch:
                 if (isChecked) {
+                    sentMsgBuf[20] = 0x01;
                     Log.d(TAG, "onCheckedChanged: openWarning");
                 } else {
+                    sentMsgBuf[20] = 0x00;
                     Log.d(TAG, "onCheckedChanged: closeWarning");
                 }
                 break;
@@ -155,13 +158,13 @@ public class DeviceHomeActivity extends AppCompatActivity implements CompoundBut
     private void InitView() {
         tTemperature = (TextView) findViewById(R.id.home_temperature);
         tHumidity = (TextView) findViewById(R.id.home_humidity);
-        tSunshine = (TextView) findViewById(R.id.home_sunshine);
-        tUVLight = (TextView) findViewById(R.id.home_uvlight);
-
+        tPM25 = (TextView) findViewById(R.id.home_pm25);
+        tArofene = (TextView) findViewById(R.id.home_arofene);
+        tWaringState = (TextView) findViewById(R.id.home_warning_state);
         sLightBtn = (SwitchButton) findViewById(R.id.home_light_switch);
         sFanBtn = (SwitchButton) findViewById(R.id.home_fan_switch);
-        sBlindBtn = (SwitchButton) findViewById(R.id.home_blind_switch);
-        sWindowBtn = (SwitchButton) findViewById(R.id.home_window_switch);
+//        sBlindBtn = (SwitchButton) findViewById(R.id.home_blind_switch);
+//        sWindowBtn = (SwitchButton) findViewById(R.id.home_window_switch);
         sWarningBtn = (SwitchButton) findViewById(R.id.home_warning_switch);
     }
 

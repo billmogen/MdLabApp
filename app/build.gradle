@@ -8,7 +8,7 @@ android {
     signingConfigs {
         signkey {
             keyAlias 'key'
-            keyPassword 'tgbhu'
+            keyPassword 'tgbhuvgyhN_1'
             storeFile file('D:/workspace/Android/MdLabApp/mdlabkey.jks')
             storePassword 'tgbhuvgyhN_1'
         }

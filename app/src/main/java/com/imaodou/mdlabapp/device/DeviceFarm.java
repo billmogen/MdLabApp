@@ -15,6 +15,7 @@ public class DeviceFarm extends Devices {
         mRelayState = 0;
         mTemperature = 0;
         mAirHumidity = 0;
+        mSoilHumidity = 0;
     }
     private static final String TAG = "DeviceFarm: ";
     public boolean mFarmLightState;
@@ -53,6 +54,8 @@ public class DeviceFarm extends Devices {
             Log.d(TAG, "decodeWeatherStationMsg: check msg humidity failed!");
             return false;
         }
+        mSoilHumidity = tmpData[16] & 0xff;
+
         return true;
     }
 }

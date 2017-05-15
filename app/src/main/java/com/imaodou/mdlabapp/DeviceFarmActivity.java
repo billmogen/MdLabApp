@@ -138,6 +138,7 @@ public class DeviceFarmActivity extends AppCompatActivity {
                 if (deviceFarm.decodeFarmMsg(data)) {
                     mFarmTemperature.setText("当前温度：" + deviceFarm.mTemperature + "℃");
                     mFarmAirHumidity.setText("空气湿度：" + deviceFarm.mAirHumidity + "%");
+                    mFarmSoilHumidity.setText("土壤湿度：" + deviceFarm.mSoilHumidity + "%");
                 } else {
                     String upMsg = byte2hex(data);
                     Log.d(TAG, "onReceiveData: upMsg " + upMsg);

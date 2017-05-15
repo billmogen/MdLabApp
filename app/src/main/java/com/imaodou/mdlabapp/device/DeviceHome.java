@@ -16,6 +16,9 @@ public class DeviceHome extends Devices {
         mHomeWarningSwitch = false;
         mHomeTemperature = mHomeHumidity = mHomeSunshine = mHomeUvLight = mHomeWarningVal = 0;
         mHomeRelayState = 0;
+        mHomeWarningStr = "无";
+        mHomePm25 = 0;
+        mHomeArofene = 0;
     }
     public byte mHomeRelayState;
     public int mHomeTemperature;
@@ -23,6 +26,9 @@ public class DeviceHome extends Devices {
     public int mHomeSunshine;
     public int mHomeUvLight;
     public int mHomeWarningVal;
+    public String  mHomeWarningStr;
+    public float mHomePm25;
+    public float mHomeArofene;
 
     public boolean mHomeLightSwitch, mHomeFanSwitch, mHomeBlindSwitch, mHomeWindowSwitch, mHomeWarningSwitch;
 
@@ -54,12 +60,32 @@ public class DeviceHome extends Devices {
             Log.d(TAG, "decodeWeatherStationMsg: check msg humidity failed!");
             return false;
         }
+        int tAroVal = (tmpData[7] & 0xff);
+        tAroVal = (tAroVal << 8) + tmpData[8];
+        mHomeArofene = ((float) tAroVal)/100;
+        int tPM25 = (tmpData[14] & 0xff);
+        tPM25 = (tPM25 << 8) + tmpData[15];
+        mHomePm25 = ((float)tPM25)/100;
+        mHomePm25 = (float)(Math.round(mHomePm25*100))/100;
+        if (mHomePm25 < 0) {
+            mHomePm25 = 0;
+        }
 
-        mHomeUvLight = tmpData[16] & 0xff;
-        int tSunLux = 0;
-        tSunLux = (tmpData[19] & 0xff);
-        tSunLux = (tSunLux << 8) + tmpData[20];
-        mHomeSunshine = tSunLux;
+        mHomeWarningVal = tmpData[17] & 0xff;
+        switch (mHomeWarningVal) {
+            case 0:
+                mHomeWarningStr = "无";
+                break;
+            case 1:
+                mHomeWarningStr = "烟雾";
+                break;
+            case 2:
+                mHomeWarningStr = "有人";
+                break;
+            default:
+                break;
+        }
+
 
         return true;
     }

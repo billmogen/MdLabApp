@@ -56,11 +56,14 @@
             android:name=".DeviceCarRockerActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".MdLabMainActivity"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".DeviceFarmActivity">
+        <activity android:name=".DeviceFarmActivity"
+                  android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".DeviceHomeActivity">
+        <activity android:name=".DeviceHomeActivity"
+                  android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 
