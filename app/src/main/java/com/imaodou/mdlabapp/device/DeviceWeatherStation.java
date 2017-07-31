@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.imaodou.mdlabapp.db.MdLabDBHelper;
 import com.imaodou.mdlabapp.util.MyApplication;
+import com.imaodou.mdlabapp.util.ToolsUtil;
 
 /**
  * Created by billmogen on 2017/1/6.
@@ -95,12 +96,13 @@ public class DeviceWeatherStation {
     public int getFalutVal() {return faultVal;}
     public int getSunLux() {return  sunLux;}
 
-    public boolean decodeWeatherStationMsg(byte[] data) {
-        if (data == null) {
+    public boolean decodeWeatherStationMsg(byte[] dataB) {
+        if (dataB == null) {
             Log.d(TAG, "decodeWeatherStationMsg: data is null! ");
             return false;
         }
-        byte[] tmpData = data;
+        //dataB[20] = (byte)150;
+        int[] tmpData = ToolsUtil.ubyteArr2IntArr(dataB);
         if (tmpData.length != 22) {
             Log.d(TAG, "decodeWeatherStationMsg: length check faile! " + tmpData.length);
             return false;
@@ -156,6 +158,7 @@ public class DeviceWeatherStation {
         tSunLux = (tmpData[19] & 0xff);
         tSunLux = (tSunLux << 8) + tmpData[20];
         sunLux = tSunLux;
+        Log.d(TAG, "decodeWeatherStationMsg: sunLux:" + sunLux);
 
         return true;
     }
