@@ -59,10 +59,15 @@
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".DeviceFarmActivity"
-                  android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".DeviceFarmActivity"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".DeviceHomeActivity"
+        <activity
+            android:name=".DeviceHomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".DeviceRobotActivity"
                   android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>

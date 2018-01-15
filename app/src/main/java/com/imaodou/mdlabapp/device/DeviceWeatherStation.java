@@ -117,12 +117,12 @@ public class DeviceWeatherStation {
         }
         voltage = tmpData[4] & 0xff;
         temperature = tmpData[5] & 0xff;
-        if ((temperature < 0) || (temperature > 51)) {
+        if ((temperature < 0)) {
             Log.d(TAG, "decodeWeatherStationMsg: check msg temperature failed!");
             return false;
         }
         humidity = tmpData[6] & 0xff;
-        if ((humidity < 0) || (humidity > 90)) {
+        if ((humidity < 0)) {
             Log.d(TAG, "decodeWeatherStationMsg: check msg humidity failed!");
             return false;
             

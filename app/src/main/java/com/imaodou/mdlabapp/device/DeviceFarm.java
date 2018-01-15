@@ -16,6 +16,10 @@ public class DeviceFarm extends Devices {
         mTemperature = 0;
         mAirHumidity = 0;
         mSoilHumidity = 0;
+        mTemperatureThreshold = 0;
+        mSoilHumidityThreshold = 0;
+        mAirHumidityThreshold = 100;
+        mAutoControl = false;
     }
     private static final String TAG = "DeviceFarm: ";
     public boolean mFarmLightState;
@@ -25,6 +29,10 @@ public class DeviceFarm extends Devices {
     public int mTemperature;
     public int mAirHumidity;
     public int mSoilHumidity;
+    public int mTemperatureThreshold;
+    public int mSoilHumidityThreshold;
+    public int mAirHumidityThreshold;
+    public boolean mAutoControl;
 
     public boolean decodeFarmMsg(byte[] data) {
         if (data == null) {
@@ -45,12 +53,12 @@ public class DeviceFarm extends Devices {
             return false;
         }
         mTemperature = tmpData[5] & 0xff;
-        if ((mTemperature < 0) || (mTemperature > 51)) {
+        if ((mTemperature < 0)) {
             Log.d(TAG, "decodeWeatherStationMsg: check msg temperature failed!");
             return false;
         }
         mAirHumidity = tmpData[6] & 0xff;
-        if ((mAirHumidity < 0) || (mAirHumidity > 90)) {
+        if ((mAirHumidity < 0)) {
             Log.d(TAG, "decodeWeatherStationMsg: check msg humidity failed!");
             return false;
         }

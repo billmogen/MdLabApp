@@ -1,6 +1,7 @@
 package com.imaodou.mdlabapp;
 
 import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -44,6 +45,13 @@ public class DeviceHomeActivity extends AppCompatActivity implements CompoundBut
     private static final String HOMEBASECMD = "FF030102004400000000000000000000000000000000";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                .detectDiskReads()
+                .detectDiskWrites()
+                .detectNetwork()
+                //.penaltyDialog()
+                .penaltyLog()
+                .build());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_home);
         mToolBar = (Toolbar) findViewById(R.id.home_toolbar);

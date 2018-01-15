@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:background="@mipmap/bg_shade"
+                tools:context="com.imaodou.mdlabapp.DeviceRobotActivity"
+                >
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:minHeight="?attr/actionBarSize" android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" android:id="@+id/robot_toolbar">
+
+        <TextView
+            android:id="@+id/robot_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/account_subtitle"
+            android:textSize="20sp" />
+    </android.support.v7.widget.Toolbar>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" app:srcCompat="@mipmap/carturnright"
+        android:layout_alignBottom="@+id/robotZuocebu" android:layout_toRightOf="@+id/robotForward"
+        android:layout_toEndOf="@+id/robotForward" android:id="@+id/robotYoucebu"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" app:srcCompat="@mipmap/carturnleft"
+        android:id="@+id/robotZuocebu"
+        android:layout_above="@+id/robotBackward" android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" app:srcCompat="@mipmap/carbackward"
+        android:id="@+id/robotBackward" android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/robotZuocebu" android:layout_toEndOf="@+id/robotZuocebu"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/carforward"
+        android:id="@+id/robotForward"
+        android:layout_above="@+id/robotYoucebu" android:layout_toRightOf="@+id/robotZuocebu"
+        android:layout_toEndOf="@+id/robotZuocebu"/>
+    <TextView
+        android:text="动作"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/robotActionState"
+        android:layout_toLeftOf="@+id/robotForward"
+        android:layout_toStartOf="@+id/robotForward"
+        android:layout_below="@+id/robot_toolbar"
+        android:gravity="center"
+        android:textSize="18sp" android:textStyle="normal|bold"/>
+    <TextView
+        android:text="舞蹈    "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/robotActionState"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/robot_toolbar"
+        android:gravity="center"
+        android:id="@+id/robotDanceState" android:textSize="18sp" android:textStyle="normal|bold"/>
+    <Button
+        android:text="左转"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/turnLeftBtn"
+        android:layout_below="@+id/robotActionState" android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" android:layout_marginTop="16dp"
+        android:layout_alignRight="@+id/robotActionState"
+        android:layout_alignEnd="@+id/robotActionState"/>
+    <Button
+        android:text="右转"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_alignBottom="@+id/turnLeftBtn"
+        android:layout_toRightOf="@+id/turnLeftBtn"
+        android:layout_marginLeft="10dp" android:layout_marginStart="10dp"
+        android:id="@+id/turnRightBtn" android:layout_alignRight="@+id/robotForward"
+        android:layout_alignEnd="@+id/robotForward"/>
+    <Button
+        android:text="蹲下"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" android:id="@+id/dunxiaBtn"
+        android:layout_below="@+id/turnLeftBtn"
+        android:layout_toLeftOf="@+id/turnRightBtn"
+    />
+    <Button
+        android:text="抱紧"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" android:id="@+id/baojinBtn"
+        android:layout_below="@+id/dunxiaBtn" android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" android:layout_alignRight="@+id/dunxiaBtn"
+        android:layout_alignEnd="@+id/dunxiaBtn"/>
+    <Button
+        android:text="站起"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_alignBottom="@+id/dunxiaBtn"
+        android:layout_alignLeft="@+id/turnRightBtn" android:layout_alignStart="@+id/turnRightBtn"
+        android:id="@+id/zhanqiBtn" android:layout_alignRight="@+id/turnRightBtn"
+        android:layout_alignEnd="@+id/turnRightBtn"/>
+    <Button
+        android:text="松开"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_alignTop="@+id/baojinBtn"
+        android:layout_alignLeft="@+id/zhanqiBtn" android:layout_alignStart="@+id/zhanqiBtn"
+        android:id="@+id/songkaiBtn" android:layout_alignRight="@+id/zhanqiBtn"
+        android:layout_alignEnd="@+id/zhanqiBtn"/>
+    <Button
+        android:text="机械舞"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_alignBottom="@+id/turnRightBtn"
+        android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
+        android:id="@+id/jixiewuBtn" android:layout_alignLeft="@+id/robotDanceState"
+        android:layout_alignStart="@+id/robotDanceState"/>
+    <Button
+        android:text="小苹果上"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_alignBottom="@+id/zhanqiBtn"
+        android:layout_alignLeft="@+id/jixiewuBtn" android:layout_alignStart="@+id/jixiewuBtn"
+        android:id="@+id/xiaopingguoshangBtn"/>
+    <Button
+        android:text="小苹果下"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_alignTop="@+id/songkaiBtn"
+        android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
+        android:id="@+id/xiaopingguoxiaBtn" android:layout_alignLeft="@+id/xiaopingguoshangBtn"
+        android:layout_alignStart="@+id/xiaopingguoshangBtn"/>
+    <Button
+        android:text="太极拳"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_below="@+id/xiaopingguoxiaBtn"
+        android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp" android:id="@+id/taijiquanBtn"
+        android:layout_alignLeft="@+id/xiaopingguoxiaBtn" android:layout_alignStart="@+id/xiaopingguoxiaBtn"/>
+    <Button
+        android:text="复位"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_below="@+id/taijiquanBtn"
+        android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp" android:id="@+id/resetBtn"
+        android:layout_alignLeft="@+id/taijiquanBtn" android:layout_alignStart="@+id/taijiquanBtn"/>
+    <Button
+        android:text="中国功夫"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_alignBottom="@+id/jixiewuBtn"
+        android:layout_toLeftOf="@+id/jixiewuBtn"
+        android:layout_marginRight="10dp" android:layout_marginEnd="11dp"
+        android:id="@+id/zhongguogongfuBtn"/>
+    <Button
+        android:text="欢快舞上"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_alignBottom="@+id/xiaopingguoshangBtn"
+        android:layout_alignLeft="@+id/zhongguogongfuBtn" android:layout_alignStart="@+id/zhongguogongfuBtn"
+        android:id="@+id/huankuaiwushangBtn"/>
+    <Button
+        android:text="欢快舞下"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_above="@+id/taijiquanBtn"
+        android:layout_alignLeft="@+id/huankuaiwushangBtn" android:layout_alignStart="@+id/huankuaiwushangBtn"
+        android:id="@+id/huankuaiwuxiaBtn"/>
+    <Button
+        android:text="功夫熊猫"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_above="@+id/resetBtn"
+        android:layout_alignLeft="@+id/huankuaiwuxiaBtn" android:layout_alignStart="@+id/huankuaiwuxiaBtn"
+        android:id="@+id/gongfuxiongmaoBtn"/>
+</RelativeLayout>

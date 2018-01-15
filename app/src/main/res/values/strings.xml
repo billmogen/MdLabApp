@@ -59,7 +59,42 @@
     <string name="mdlab_device_smartcar">智能车</string>
     <string name="mdlab_device_smartfarmer">智慧农业</string>
     <string name="mdlab_device_smarthome">智能家居</string>
+    <string name="mdlab_device_robot">舞蹈机器人</string>
     <string name="mdlab_device_connect">在线</string>
     <string name="mdlab_device_disconnect">离线</string>
     <string name="title_activity_settings">设置</string>
+    <string name="light_hint">
+        <font size="18">设置增温阈值</font>
+    </string>
+    <string name="pump_hint">
+        <font size="18">设置灌溉阈值</font>
+    </string>
+    <string name="fan_hint">
+        <font size="18">设置通风阈值</font>
+    </string>
+    <!-- robot control commond -->
+    <string name="robot_cmd_reset">#1GC1</string>
+    <string name="robot_cmd_xiaopingguoshang">#2GC1</string>
+    <string name="robot_cmd_xiaopingguoxia">#3GC1</string>
+    <string name="robot_cmd_taijiquan">#4GC1</string>
+    <string name="robot_cmd_zhongguogongfu">#5GC1</string>
+    <string name="robot_cmd_huanlewudaoshang">#6GC1</string>
+    <string name="robot_cmd_huanlewudaoxia">#7GC1</string>
+    <string name="robot_cmd_jixiewu">#8GC1</string>
+    <string name="robot_cmd_gongfuxiongmao">#9GC1</string>
+    <string name="robot_cmd_peidui">#10GC1</string>
+    <string name="robot_cmd_baojin">#11GC1</string>
+    <string name="robot_cmd_zhanqilai">#12GC1</string>
+    <string name="robot_cmd_songkai">#13GC1</string>
+    <string name="robot_cmd_zuozhuan">#14GC1</string>
+    <string name="robot_cmd_youzhuan">#15GC1</string>
+    <string name="robot_cmd_qianjin">#17GC1</string>
+    <string name="robot_cmd_zuocebu">#19GC1</string>
+    <string name="robot_cmd_youcebu">#20GC1</string>
+    <string name="robot_cmd_houtui">#22GC1</string>
+    <string name="robot_cmd_dunxia">#24GC1</string>
+
+    <string name="title_activity_device_robot">DeviceRobotActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

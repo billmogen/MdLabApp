@@ -197,6 +197,14 @@ public class MdLabMainActivity extends AppCompatActivity
                         devices.deviceType = "farm";
                         devices.deviceState = 1;
                         break;
+                    case "Robot":
+                        str = String.format(getString(R.string.mdlab_device_robot));
+                        str = str + tmp[2].toString();
+                        holder.mDeviceName.setText(str);
+                        holder.mDeviceImage.setImageResource(R.mipmap.smartfarmonline);
+                        devices.deviceType = "robot";
+                        devices.deviceState = 1;
+                        break;
                     default:
                         break;
                 }
@@ -225,6 +233,12 @@ public class MdLabMainActivity extends AppCompatActivity
                         break;
                     case "Farm":
                         str = String.format(getString(R.string.mdlab_device_smartfarmer));
+                        str = str + tmp[2].toString();
+                        holder.mDeviceName.setText(str);
+                        holder.mDeviceImage.setImageResource(R.mipmap.smartfarmoffline);
+                        break;
+                    case "Robot":
+                        str = String.format(getString(R.string.mdlab_device_robot));
                         str = str + tmp[2].toString();
                         holder.mDeviceName.setText(str);
                         holder.mDeviceImage.setImageResource(R.mipmap.smartfarmoffline);
@@ -268,6 +282,9 @@ public class MdLabMainActivity extends AppCompatActivity
                                 context.startActivity(intent);
                             } else if (devices.deviceType.equals("home")) {
                                 Intent intent = new Intent(context, DeviceHomeActivity.class);
+                                context.startActivity(intent);
+                            } else if (devices.deviceType.equals("robot")) {
+                                Intent intent = new Intent(context, DeviceRobotActivity.class);
                                 context.startActivity(intent);
                             }
 

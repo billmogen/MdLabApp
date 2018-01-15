@@ -3,7 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhite">#ffffff</color>
     <color name="divWhite">#E5E5E5</color>
 
 
@@ -33,7 +33,7 @@
     <color name="account_dark_gray">#ff4e4c57</color>
     <color name="account_darker_gray">#ff39373f</color>
     <color name="account_bg_lavender">#fff5f5f9</color>
-    <item type="color" name="account_bg_purple">@color/account_purple</item>
+    <item name="account_bg_purple" type="color">@color/account_purple</item>
     <color name="account_btn_txt_gray">#ff3e3e3e</color>
     <color name="account_btn_txt_purple">#ffffffff</color>
     <color name="account_btn_txt_purple_disabled">#99ffffff</color>
@@ -48,13 +48,13 @@
     <color name="account_sso_text">#ff3f3f3f</color>
     <color name="account_settings_items_text">#ff19191a</color>
     <color name="account_header_text">#ff19191a</color>
-    <item type="color" name="account_button_text">@color/yapps_purple_accent</item>
+    <item name="account_button_text" type="color">@color/yapps_purple_accent</item>
     <color name="account_edit_hint">#ff7e7d80</color>
-    <color name="account_subtitle">#ff7e7d80</color>
+    <color name="account_subtitle">#7e7d80</color>
     <color name="account_legal">#ff19191a</color>
     <color name="account_legal_hightlight">#ff0074b3</color>
-    <item type="color" name="account_forgot_password">@color/yapps_purple_accent</item>
-    <item type="color" name="account_forgot_password_hightlight">@color/yapps_purple_accent</item>
+    <item name="account_forgot_password" type="color">@color/yapps_purple_accent</item>
+    <item name="account_forgot_password_hightlight" type="color">@color/yapps_purple_accent</item>
     <color name="account_signup_actionbar_backButton_pressed">#666230b4</color>
     <color name="account_signin_bg">#ff493747</color>
     <color name="account_splash_version_txt_color">#ff2a0827</color>
@@ -71,20 +71,20 @@
     <color name="account_sso_action_bar_background">#b0ffffff</color>
     <color name="sidebar_text_light">#ff000000</color>
     <color name="sidebar_text_dark">#ffffffff</color>
-    <item type="color" name="sidebar_identity_text_color_light">@color/sidebar_text_light</item>
+    <item name="sidebar_identity_text_color_light" type="color">@color/sidebar_text_light</item>
     <color name="sidebar_identity_text_color_dark">#ffdedede</color>
     <color name="sidebar_identity_subtitle_text_color_light">#ff565657</color>
     <color name="sidebar_identity_subtitle_text_color_dark">#ffadadad</color>
     <color name="sidebar_header_text_color_light">#ff4c4c4d</color>
     <color name="sidebar_header_text_color_dark">#ff848484</color>
-    <item type="color" name="sidebar_item_text_color_light">@color/sidebar_text_light</item>
-    <item type="color" name="sidebar_item_text_color_dark">@color/sidebar_text_dark</item>
+    <item name="sidebar_item_text_color_light" type="color">@color/sidebar_text_light</item>
+    <item name="sidebar_item_text_color_dark" type="color">@color/sidebar_text_dark</item>
     <color name="sidebar_badge_text_color_light">#ff4c4c4d</color>
     <color name="sidebar_badge_text_color_dark">#ff848484</color>
     <color name="sidebar_accessory_text_color_light">#ff4c4c4d</color>
     <color name="sidebar_accessory_text_color_dark">#ff848484</color>
     <color name="sidebar_footer_text_color_light">#ffabaeb7</color>
-    <item type="color" name="sidebar_footer_text_color_dark">@color/sidebar_text_dark</item>
+    <item name="sidebar_footer_text_color_dark" type="color">@color/sidebar_text_dark</item>
     <color name="sidebar_item_background_light">#ffffffff</color>
     <color name="sidebar_item_background_dark">#ff272627</color>
     <color name="sidebar_item_expanded_background_light">#fff6f5fb</color>
@@ -103,8 +103,12 @@
     <color name="sidebar_identity_background_dark">#ff121212</color>
     <color name="sidebar_subnav_item_background_light">#ffffffff</color>
     <color name="sidebar_subnav_item_background_dark">#ff272627</color>
-    <item type="color" name="sidebar_subnav_item_background_activated_light">@color/sidebar_item_background_activated_light</item>
-    <item type="color" name="sidebar_subnav_item_background_activated_dark">@color/sidebar_item_background_activated_dark</item>
+    <item name="sidebar_subnav_item_background_activated_light" type="color">
+        @color/sidebar_item_background_activated_light
+    </item>
+    <item name="sidebar_subnav_item_background_activated_dark" type="color">
+        @color/sidebar_item_background_activated_dark
+    </item>
     <color name="sidebar_accessory_background_light">#00000000</color>
     <color name="sidebar_accessory_background_dark">#00000000</color>
     <color name="sidebar_header_accessory_background_light">#ffd5d5da</color>
@@ -124,14 +128,20 @@
     <color name="semi_trans_background">#af000000</color>
     <color name="abs__background_holo_dark">#ff000000</color>
     <color name="abs__background_holo_light">#fff3f3f3</color>
-    <item type="color" name="abs__bright_foreground_holo_dark">@color/abs__background_holo_light</item>
-    <item type="color" name="abs__bright_foreground_holo_light">@color/abs__background_holo_dark</item>
+    <item name="abs__bright_foreground_holo_dark" type="color">@color/abs__background_holo_light
+    </item>
+    <item name="abs__bright_foreground_holo_light" type="color">@color/abs__background_holo_dark
+    </item>
     <color name="abs__bright_foreground_disabled_holo_dark">#ff4c4c4c</color>
     <color name="abs__bright_foreground_disabled_holo_light">#ffb2b2b2</color>
-    <item type="color" name="abs__bright_foreground_inverse_holo_dark">@color/abs__bright_foreground_holo_light</item>
-    <item type="color" name="abs__bright_foreground_inverse_holo_light">@color/abs__bright_foreground_holo_dark</item>
+    <item name="abs__bright_foreground_inverse_holo_dark" type="color">
+        @color/abs__bright_foreground_holo_light
+    </item>
+    <item name="abs__bright_foreground_inverse_holo_light" type="color">
+        @color/abs__bright_foreground_holo_dark
+    </item>
     <color name="abs__holo_blue_light">#ff33b5e5</color>
->
+    >
     <color name="common_signin_btn_dark_text_disabled">#ffaaaaaa</color>
 
     <color name="common_signin_btn_light_text_default">#ff737373</color>
@@ -193,4 +203,6 @@
     <color name="connect_state_text_online">#ffffffff</color>
     <color name="connect_state_bg_online">#7700ff00</color>
     <color name="connect_state_bg_offline">#ffffffff</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

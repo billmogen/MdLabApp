@@ -20,32 +20,78 @@
         android:layout_height="wrap_content"
         android:id="@+id/farm_state"
         android:layout_below="@+id/farm_toolbar"
-        android:textColor="@color/colorWhite"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_marginTop="20sp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" android:textColor="@color/colorWhite"/>
+
     <TextView
         android:text="当前温度：℃"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:layout_below="@+id/farm_state"
-        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-        android:textColor="@color/colorWhite"
-        android:layout_marginLeft="29dp" android:layout_marginStart="29dp"
-        android:layout_marginTop="13dp" android:id="@+id/farm_temperature"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/farm_state"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="29sp"
+        android:layout_marginStart="29sp"
+        android:layout_marginTop="13sp"
+        android:id="@+id/farm_temperature" android:textColor="@color/colorWhite"/>
     <TextView
         android:text="土壤湿度：0%"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp" android:id="@+id/farm_soil_humidity"
-        android:textColor="@color/colorWhite"
-        android:layout_below="@+id/farm_temperature" android:layout_alignLeft="@+id/farm_temperature"
-        android:layout_alignStart="@+id/farm_temperature"/>
+        android:layout_marginTop="13sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_below="@+id/farm_temperature"
+        android:layout_alignLeft="@+id/farm_temperature"
+        android:layout_alignStart="@+id/farm_temperature"
+        android:id="@+id/farm_soil_humidity" android:textColor="@color/colorWhite"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/pump_hint"
+        android:textColorHint="@color/colorWhite"
+        android:gravity="center|top"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:theme="@style/MyEditText"
+        android:maxLines="1"
+        android:maxLength="3"
+        android:textCursorDrawable="@null"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/farm_soil_humidity"
+        android:id="@+id/water_threshold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/fan_hint"
+        android:textColorHint="@color/colorWhite"
+        android:gravity="center"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:theme="@style/MyEditText"
+        android:maxLines="1"
+        android:maxLength="3"
+        android:textCursorDrawable="@null"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/farm_air_humidity"
+        android:id="@+id/wind_threshold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
     <TextView
         android:text="空气湿度：%"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:layout_below="@+id/farm_soil_humidity"
-        android:textColor="@color/colorWhite"
-        android:layout_alignLeft="@+id/farm_soil_humidity" android:layout_alignStart="@+id/farm_soil_humidity"
-        android:layout_marginTop="13dp" android:id="@+id/farm_air_humidity"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/farm_soil_humidity"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_alignLeft="@+id/farm_soil_humidity"
+        android:layout_alignStart="@+id/farm_soil_humidity"
+        android:layout_marginTop="13dp"
+        android:id="@+id/farm_air_humidity" android:textColor="@color/colorWhite"/>
+    
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" app:srcCompat="@mipmap/plug_small_off"
@@ -128,4 +174,40 @@
         android:id="@+id/farm_fan_name"
         android:layout_below="@+id/farm_fan_btn" android:layout_alignRight="@+id/farm_fan_btn"
         android:layout_alignEnd="@+id/farm_fan_btn"/>
+
+    <Switch
+        android:text="自动化"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="关"
+        android:textOn="开"
+        android:showText="true"
+        android:thumb="@drawable/switch_selector"
+        android:track="@drawable/switch_track"
+        android:switchMinWidth="55dp"
+        android:layout_alignLeft="@+id/temperature_threshold"
+        android:layout_alignBottom="@+id/farm_state"
+        android:layout_alignTop="@+id/farm_state"
+        android:layout_above="@+id/temperature_threshold"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/auto_switch"
+        android:textColor="@color/colorWhite" android:textSize="18sp"
+    />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/light_hint"
+        android:textColorHint="@color/colorWhite"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:gravity="center|top"
+        android:theme="@style/MyEditText"
+        android:maxLines="1"
+        android:maxLength="3"
+        android:textCursorDrawable="@null"
+        android:id="@+id/temperature_threshold" android:layout_alignTop="@+id/farm_temperature"
+        android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 </RelativeLayout>

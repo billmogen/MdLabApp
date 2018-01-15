@@ -1,6 +1,7 @@
 package com.imaodou.mdlabapp;
 
 import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -52,6 +53,13 @@ public class DeviceCarRockerActivity extends AppCompatActivity {
     private int updateSpeedFlag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                .detectDiskReads()
+                .detectDiskWrites()
+                .detectNetwork()
+                //.penaltyDialog()
+                .penaltyLog()
+                .build());
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(
