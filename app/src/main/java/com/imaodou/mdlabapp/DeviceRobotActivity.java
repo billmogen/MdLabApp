@@ -27,7 +27,7 @@ import static com.imaodou.mdlabapp.device.Devices.TCPPORT;
 
 public class DeviceRobotActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageButton tForward, tBackWard, tZuocebu, tYoucebu;
-    private Button tActTurnLeft, tActTurnRight, tActDunxia, tActZhanqi, tActBaojin, tActSongkai;
+    private Button tActTurnLeft, tActTurnRight, tActDunxia, tActZhanqi, tActBaojin, tActSongkai, tActStop;
     private Button tDanceChinaKongfu, tDanceHappyFirst, tDanceHappySecond, tDancePandaKongfu,
             tDanceJixiewu, tDanceAppleFirst, tDanceAppleSecond, tDanceTaijiquan;
     private Button tReset;
@@ -80,6 +80,7 @@ public class DeviceRobotActivity extends AppCompatActivity implements View.OnCli
         tDanceAppleSecond.setOnClickListener(this);
         tDanceTaijiquan.setOnClickListener(this);
         tReset.setOnClickListener(this);
+        tActStop.setOnClickListener(this);
 
     }
 
@@ -144,6 +145,9 @@ public class DeviceRobotActivity extends AppCompatActivity implements View.OnCli
             case R.id.resetBtn:
                 sTmpCmd = deviceRobot.ROBOTRESET;
                 break;
+            case R.id.zanting:
+                sTmpCmd = deviceRobot.ACTSTOP;
+                break;
             default:
                 break;
         }
@@ -176,6 +180,7 @@ public class DeviceRobotActivity extends AppCompatActivity implements View.OnCli
         tDanceAppleSecond = (Button) findViewById(R.id.xiaopingguoxiaBtn);
         tDanceTaijiquan = (Button) findViewById(R.id.taijiquanBtn);
         tReset = (Button) findViewById(R.id.resetBtn);
+        tActStop = (Button) findViewById(R.id.zanting);
     }
 
     @Override

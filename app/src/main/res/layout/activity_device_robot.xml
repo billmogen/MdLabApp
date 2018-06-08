@@ -154,6 +154,13 @@
         android:layout_marginTop="16dp" android:id="@+id/resetBtn"
         android:layout_alignLeft="@+id/taijiquanBtn" android:layout_alignStart="@+id/taijiquanBtn"/>
     <Button
+        android:text="暂停"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_below="@+id/gongfuxiongmaoBtn"
+        android:layout_marginTop="16dp"
+        android:layout_alignLeft="@+id/gongfuxiongmaoBtn" android:layout_alignStart="@+id/gongfuxiongmaoBtn"
+        android:id="@+id/zanting"/>
+    <Button
         android:text="中国功夫"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:layout_alignBottom="@+id/jixiewuBtn"

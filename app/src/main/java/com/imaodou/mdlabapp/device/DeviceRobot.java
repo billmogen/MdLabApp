@@ -27,6 +27,8 @@ public class DeviceRobot extends Devices {
         DANCEAPPLESECOND = "#3GC1\r\n";
         DANCETAIJIQUAN = "#4GC1\r\n";
         ROBOTRESET = "#1GC1\r\n";
+        ACTSTOP = "#STOP\r\n";
+
     }
 
     public  String ACTFORWARD;
@@ -48,5 +50,6 @@ public class DeviceRobot extends Devices {
     public  String DANCEAPPLESECOND;
     public  String DANCETAIJIQUAN;
     public  String ROBOTRESET;
+    public  String ACTSTOP;
 
 }
