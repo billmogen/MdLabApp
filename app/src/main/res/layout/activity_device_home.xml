@@ -143,6 +143,28 @@
         android:layout_alignBottom="@+id/home_warning"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+    <TextView
+        android:text="加湿器"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/home_pm25"
+        android:layout_alignBottom="@+id/home_warning"
+        android:layout_alignRight="@+id/home_warning"
+        android:id="@+id/home_jiashiqi"/>
+    <com.kyleduo.switchbutton.SwitchButton
+        android:id="@+id/home_jiashiqi_switch"
+        style="@style/SwitchButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@drawable/custom_text_state_color"
+        android:textSize="14sp"
+        app:kswTextOff="关"
+        app:kswTextOn="开"
+        app:kswTintColor="#0E5AA4"
+        app:kswBackColor="#ffc6c6c6"
+        android:layout_alignBottom="@+id/home_jiashiqi"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
     <!--TextView
         android:text="窗帘"
         android:layout_width="wrap_content"

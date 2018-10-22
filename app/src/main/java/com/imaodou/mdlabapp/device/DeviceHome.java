@@ -14,6 +14,7 @@ public class DeviceHome extends Devices {
         mHomeBlindSwitch = false;
         mHomeWindowSwitch = false;
         mHomeWarningSwitch = false;
+        mHomeJiashiqiSwitch = false;
         mHomeTemperature = mHomeHumidity = mHomeSunshine = mHomeUvLight = mHomeWarningVal = 0;
         mHomeRelayState = 0;
         mHomeWarningStr = "无";
@@ -30,7 +31,7 @@ public class DeviceHome extends Devices {
     public float mHomePm25;
     public float mHomeArofene;
 
-    public boolean mHomeLightSwitch, mHomeFanSwitch, mHomeBlindSwitch, mHomeWindowSwitch, mHomeWarningSwitch;
+    public boolean mHomeLightSwitch, mHomeFanSwitch, mHomeBlindSwitch, mHomeWindowSwitch, mHomeWarningSwitch, mHomeJiashiqiSwitch;
 
     public boolean decodeFarmMsg(byte[] data) {
         if (data == null) {
@@ -82,7 +83,17 @@ public class DeviceHome extends Devices {
             case 2:
                 mHomeWarningStr = "有人";
                 break;
+            case 3:
+                mHomeWarningStr = "烟雾 + 有人";
+                break;
+            case 4:
+                mHomeWarningStr = "门未关闭";
+                break;
+            case 5:
+                mHomeWarningStr = "烟雾 + 门未关闭";
+                break;
             default:
+                mHomeWarningStr = "无";
                 break;
         }
 

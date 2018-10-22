@@ -33,6 +33,8 @@ public class DeviceHomeActivity extends AppCompatActivity implements CompoundBut
     private TextView tWaringState;
     private SwitchButton sLightBtn;
     private SwitchButton sFanBtn;
+    private SwitchButton sJiashiqiBtn;
+
     private TextView tPM25;
     private TextView tArofene;
 //    private SwitchButton sBlindBtn;
@@ -73,6 +75,7 @@ public class DeviceHomeActivity extends AppCompatActivity implements CompoundBut
 //        sBlindBtn.setOnCheckedChangeListener(this);
 //        sWindowBtn.setOnCheckedChangeListener(this);
         sWarningBtn.setOnCheckedChangeListener(this);
+        sJiashiqiBtn.setOnCheckedChangeListener(this);
 
         tcpClientConnector.setOnConnectListener(new TcpClientConnector.ConnectListener() {
             @Override
@@ -154,6 +157,18 @@ public class DeviceHomeActivity extends AppCompatActivity implements CompoundBut
                     Log.d(TAG, "onCheckedChanged: closeWarning");
                 }
                 break;
+            case R.id.home_jiashiqi_switch:
+                if (isChecked) {
+                    Log.d(TAG, "onCheckedChanged: openJiashiqi");
+                    deviceHome.mHomeJiashiqiSwitch = true;
+                    deviceHome.mHomeRelayState += 2;
+                } else {
+                    Log.d(TAG, "onCheckedChanged: closeJiashiqi");
+                    deviceHome.mHomeJiashiqiSwitch = false;
+                    deviceHome.mHomeRelayState -= 2;
+                }
+                sentMsgBuf[16] = deviceHome.mHomeRelayState;
+                break;
             default:
                 break;
         }
@@ -174,6 +189,8 @@ public class DeviceHomeActivity extends AppCompatActivity implements CompoundBut
 //        sBlindBtn = (SwitchButton) findViewById(R.id.home_blind_switch);
 //        sWindowBtn = (SwitchButton) findViewById(R.id.home_window_switch);
         sWarningBtn = (SwitchButton) findViewById(R.id.home_warning_switch);
+        sJiashiqiBtn = (SwitchButton) findViewById(R.id.home_jiashiqi_switch);
+
     }
 
     @Override
