@@ -20,6 +20,9 @@ public class DeviceHome extends Devices {
         mHomeWarningStr = "无";
         mHomePm25 = 0;
         mHomeArofene = 0;
+        mHomeHumidityThreshold = 10;
+        mHomeHumidityAutoControl = false;
+
     }
     public byte mHomeRelayState;
     public int mHomeTemperature;
@@ -30,6 +33,8 @@ public class DeviceHome extends Devices {
     public String  mHomeWarningStr;
     public float mHomePm25;
     public float mHomeArofene;
+    public byte mHomeHumidityThreshold;
+    public boolean mHomeHumidityAutoControl;
 
     public boolean mHomeLightSwitch, mHomeFanSwitch, mHomeBlindSwitch, mHomeWindowSwitch, mHomeWarningSwitch, mHomeJiashiqiSwitch;
 
@@ -52,12 +57,12 @@ public class DeviceHome extends Devices {
             return false;
         }
         mHomeTemperature = tmpData[5] & 0xff;
-        if ((mHomeTemperature < 0) || (mHomeTemperature > 51)) {
+        if ((mHomeTemperature < 0) || (mHomeTemperature > 100)) {
             Log.d(TAG, "decodeWeatherStationMsg: check msg temperature failed!");
             return false;
         }
         mHomeHumidity = tmpData[6] & 0xff;
-        if ((mHomeHumidity < 0) || (mHomeHumidity > 90)) {
+        if ((mHomeHumidity < 0) || (mHomeHumidity > 100)) {
             Log.d(TAG, "decodeWeatherStationMsg: check msg humidity failed!");
             return false;
         }

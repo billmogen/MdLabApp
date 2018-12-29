@@ -1,5 +1,9 @@
 package com.imaodou.mdlabapp.util;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 /**
  * Created by billmogen on 2017/3/28.
  */
@@ -42,6 +46,20 @@ public class ToolsUtil {
         }
         return result;
     }
+
+    public static int getSomePrefToInt(Context context, String key) {
+        SharedPreferences prefs =
+                PreferenceManager.getDefaultSharedPreferences(context);
+        String value = prefs.getString(key, null);
+        return value == null ? -1 : Integer.valueOf(value);
+    }
+
+    public static boolean getSomePrefToBool(Context context, String key) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        Boolean checkbox = prefs.getBoolean(key, false);
+        return checkbox;
+    }
+
 }
 
 

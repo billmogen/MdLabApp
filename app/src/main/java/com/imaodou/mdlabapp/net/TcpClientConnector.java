@@ -128,8 +128,10 @@ public class TcpClientConnector {
      */
     public void send(byte[] buffer) throws IOException {
         if (mClient == null) {
-            Toast.makeText(MyApplication.getContextObject(), "网络错误，请重新连接！", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(MyApplication.getContextObject(), "网络错误，请重新连接！", Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "send: 网络错误");
         } else {
+            Log.d(TAG, "send: send success");
             OutputStream outputStream = mClient.getOutputStream();
             if (outputStream != null) {
                 outputStream.write(buffer);
@@ -147,10 +149,15 @@ public class TcpClientConnector {
      */
     public void disconnect() throws IOException {
         if (mClient != null) {
+            Log.d(TAG, "disconnect: close");
+            mClient.shutdownInput();
+            mClient.shutdownOutput();
             mClient.close();
             mClient = null;
+
             mConnectThread.interrupt();
             mConnectThread = null;
+
         }
     }
 

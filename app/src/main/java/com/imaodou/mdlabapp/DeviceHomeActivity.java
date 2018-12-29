@@ -1,6 +1,9 @@
 package com.imaodou.mdlabapp;
 
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.StrictMode;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
@@ -15,6 +18,7 @@ import android.widget.TextView;
 
 import com.imaodou.mdlabapp.device.DeviceHome;
 import com.imaodou.mdlabapp.net.TcpClientConnector;
+import com.imaodou.mdlabapp.util.ToolsUtil;
 import com.kyleduo.switchbutton.SwitchButton;
 
 import org.w3c.dom.Text;
@@ -43,6 +47,8 @@ public class DeviceHomeActivity extends AppCompatActivity implements CompoundBut
 
     private TcpClientConnector tcpClientConnector;
     private DeviceHome deviceHome;
+
+    private Handler mHandler;
     private static final String TAG = "DeviceHomeActivity";
     private static final String HOMEBASECMD = "FF030102004400000000000000000000000000000000";
     @Override
@@ -51,7 +57,8 @@ public class DeviceHomeActivity extends AppCompatActivity implements CompoundBut
                 .detectDiskReads()
                 .detectDiskWrites()
                 .detectNetwork()
-                //.penaltyDialog()
+//                .penaltyDialog()
+//                .penaltyDeath()
                 .penaltyLog()
                 .build());
         super.onCreate(savedInstanceState);
@@ -68,6 +75,36 @@ public class DeviceHomeActivity extends AppCompatActivity implements CompoundBut
         tcpClientConnector = TcpClientConnector.getInstance();
         tcpClientConnector.creatConnect(HOSTIP, TCPPORT);
         deviceHome = (DeviceHome) new DeviceHome();
+        HandlerThread thread = new HandlerThread("SendMsgHandlerThread");
+        thread.start();
+        mHandler = new Handler(thread.getLooper());
+        mHandler.post(mBackgroundRunnable);
+
+
+
+
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                deviceHome.mHomeHumidityThreshold = (byte) ToolsUtil.getSomePrefToInt(getApplicationContext(),"pref_key_home_humidity");
+//                deviceHome.mHomeHumidityAutoControl = ToolsUtil.getSomePrefToBool(getApplicationContext(), "pref_key_home_auto_switch");
+//                Log.d(TAG, "run: homeAutoControl: " + deviceHome.mHomeHumidityAutoControl + " homeThreshold: " + deviceHome.mHomeHumidityThreshold);
+//                byte[] sentMsgBuf = hex2Bytes(HOMEBASECMD);
+//                sentMsgBuf[5] = 32;
+//                if (deviceHome.mHomeHumidityAutoControl) {
+//                    sentMsgBuf[14] = 1;
+//                    sentMsgBuf[15] = deviceHome.mHomeHumidityThreshold;
+//                } else {
+//                    sentMsgBuf[14] = 0;
+//                    sentMsgBuf[15] = deviceHome.mHomeHumidityThreshold;
+//                }
+//                try {
+//                    tcpClientConnector.send(sentMsgBuf);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }).start();
 
         InitView();
         sLightBtn.setOnCheckedChangeListener(this);
@@ -76,6 +113,7 @@ public class DeviceHomeActivity extends AppCompatActivity implements CompoundBut
 //        sWindowBtn.setOnCheckedChangeListener(this);
         sWarningBtn.setOnCheckedChangeListener(this);
         sJiashiqiBtn.setOnCheckedChangeListener(this);
+
 
         tcpClientConnector.setOnConnectListener(new TcpClientConnector.ConnectListener() {
             @Override
@@ -94,10 +132,40 @@ public class DeviceHomeActivity extends AppCompatActivity implements CompoundBut
 
             }
         });
+
     }
+
+    Runnable mBackgroundRunnable = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                Thread.currentThread().sleep(100);
+            } catch(InterruptedException e) {}
+
+            deviceHome.mHomeHumidityThreshold = (byte) ToolsUtil.getSomePrefToInt(getApplicationContext(),"pref_key_home_humidity");
+            deviceHome.mHomeHumidityAutoControl = ToolsUtil.getSomePrefToBool(getApplicationContext(), "pref_key_home_auto_switch");
+            Log.d(TAG, "run: homeAutoControl: " + deviceHome.mHomeHumidityAutoControl + " homeThreshold: " + deviceHome.mHomeHumidityThreshold);
+            byte[] sentMsgBuf = hex2Bytes(HOMEBASECMD);
+            sentMsgBuf[5] = 32;
+            if (deviceHome.mHomeHumidityAutoControl) {
+                sentMsgBuf[14] = 1;
+                sentMsgBuf[15] = deviceHome.mHomeHumidityThreshold;
+            } else {
+                sentMsgBuf[14] = 0;
+                sentMsgBuf[15] = deviceHome.mHomeHumidityThreshold;
+            }
+            try {
+                tcpClientConnector.send(sentMsgBuf);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         byte[] sentMsgBuf = hex2Bytes(HOMEBASECMD);
+
         switch (buttonView.getId()) {
             case R.id.home_light_switch:
                 if (isChecked) {
@@ -221,6 +289,7 @@ public class DeviceHomeActivity extends AppCompatActivity implements CompoundBut
             e.printStackTrace();
         }
         Log.d(TAG, "onDestroy: destoryDeviceAct");
+        mHandler.removeCallbacks(mBackgroundRunnable);
     }
 
     private static byte[] hex2Bytes(String src){

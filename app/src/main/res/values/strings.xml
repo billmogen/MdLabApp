@@ -50,6 +50,21 @@
     <string name="pref_ringtone_silent">静音</string>
 
     <string name="pref_title_vibrate">震动</string>
+    <!-- Example settings for device -->
+    <string name="pref_header_device">设备</string>
+    <string name="pref_title_home">智慧家居</string>
+    <string name="pref_switch_title_home">自动化</string>
+    <string name="pref_text_home_humidity">空气湿度</string>
+    <string name="pref_text_home_humidity_summary">湿度小于阈值加湿器工作(0-99%)</string>
+    <string name="pref_title_weatherstation">数字气象站</string>
+    <string name="pref_title_smartcar">智能动车</string>
+    <string name="pref_title_farmer">智慧农业</string>
+    <string name="pref_switch_title_farmer">自动化</string>
+    <string name="pref_text_farmer_soil_humidity">土壤湿度</string>
+    <string name="pref_text_farmer_soil_humidity_summary">湿度小于阈值水泵工作(0-99%)</string>
+    <string name="pref_text_farmer_temperature">环境温度</string>
+    <string name="pref_text_farmer_temperature_summary">温度小于阈值加热(0-99)</string>
+    <string name="pref_title_robot">机器人</string>
 
     <string name="title_activity_device_detail">DeviceDetailActivity</string>
 

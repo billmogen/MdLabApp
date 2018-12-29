@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/preference_category_title_device_weatherstation"
+        android:text="@string/pref_title_weatherstation"
+        android:textColor="@color/abs__bright_foreground_disabled_holo_dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_lg"
+        android:textStyle="normal"
+        android:textAllCaps="true"/>
+    <ImageView
+        android:id="@+id/pref_divider_weatherstation"
+        style="@style/Line.Solid"
+        android:layout_width="match_parent"
+        android:layout_below="@id/preference_category_title_device_weatherstation"
+        android:scaleType="fitXY" />
+</RelativeLayout>
